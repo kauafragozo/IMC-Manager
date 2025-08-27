@@ -39,14 +39,6 @@ Esta é a **versão inicial** do projeto, criada no **VisualG**, com o objetivo 
 
 ---
 
-## 🎯 Próximos passos (versão v2)
-- Reescrever o projeto em **C#**, utilizando:
-- **Lista** para armazenar múltiplos pacientes
-- **Loop (while/menu)** para continuar rodando
-- Organização do código em **métodos** ou **classe Paciente**
-
----
-
 ## 👨‍💻 Autor
 **Kauã Fragozo** – Estudante de Análise e Desenvolvimento de Sistemas  
 - LinkedIn: https://www.linkedin.com/in/kauã-fragozo-8a3a15260
