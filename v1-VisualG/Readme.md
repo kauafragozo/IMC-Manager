@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # IMC-Manager
 
 Sistema de Cálculo de IMC – v1 (VisualG)
