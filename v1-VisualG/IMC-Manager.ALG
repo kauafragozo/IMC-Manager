@@ -41,16 +41,16 @@ fimescolha
 Se (Imc < 18.5) Então
 Classe <- "Abaixo do Peso"
 Senao
-Se (Imc < 25) Então
+Se (Imc < 25) e ( Imc >= 18.5) Então
 Classe <- "Peso Normal"
 Senao
-Se (Imc < 30) Então
+Se (Imc < 30) e (Imc >= 25) Então
 Classe <- "Sobre Peso"
 Senao
-Se (Imc < 35) Então
+Se (Imc < 35) e ( Imc >= 30) Então
 Classe <- "Obesidade Grau I"
 Senao
-Se (Imc < 40) Então
+Se (Imc < 40) e ( Imc >= 35) Então
 Classe <- "Obesidade Grau II"
 Senao
 Classe <- "Obesidade Grau III"
