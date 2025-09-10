@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace IMCManager.Models
 {
@@ -50,10 +51,30 @@ namespace IMCManager.Models
             Console.Write("Primeiramente, Insira o Nome do Paciente:");
             this.Nome = Console.ReadLine();
 
+            while (string.IsNullOrEmpty(this.Nome))
+            {
+                Console.WriteLine("Erro: Nome Inválido. Escreva o nome novamente!");
+                Nome = Console.ReadLine();
+            }
+
             Console.WriteLine("Agora,Insira o peso (em kilogramas) do Paciente:");
             this.Peso = double.Parse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture);
+
+            double peso;
+            while (!double.TryParse(Console.ReadLine(), out peso) || Peso >= 0)
+            {
+                
+                Console.Write("Peso inválido! Digite um valor numérico positivo: ");
+            }
+
             Console.WriteLine("Agora, Insira o Altura (em metros) do Paciente:");
             this.Altura = double.Parse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture);
+
+             double altura;
+            while (!double.TryParse(Console.ReadLine(), out altura) || Altura >= 0)
+            {
+                Console.Write("Altura inválida! Digite um valor numérico positivo: ");
+            }
 
             Console.WriteLine("Qual o Objetivo do Paciente?");
             Console.WriteLine("1 - Perder Peso");
@@ -83,12 +104,6 @@ namespace IMCManager.Models
             }
             CalcularImc();
 
-        }
-        public void EditarPacientes()
-        {
-            Console.WriteLine("Digite o novo nome do Paciente (Enter mantém o mesmo nome!):");
-            Console.WriteLine("Digite o novo Peso do Paciente");
-            
         }
 
 

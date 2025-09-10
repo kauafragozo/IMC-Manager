@@ -32,41 +32,33 @@ namespace IMCManager
                         novo.CadastrarPaciente();
                         pacientes.Add(novo);
                         Console.WriteLine($"Paciente {novo.Nome} cadastrado com sucesso!");
-
-
-                        Console.WriteLine("Deseja Realizar outra Operação?");
-                        Console.WriteLine("1 - Sim");
-                        Console.WriteLine("2 - Não");
-
-                        exec = int.Parse(Console.ReadLine());
-                        if (exec == 1)
-                        {
-                            executando = true;
-                        }
-                        else
-                        {
-                            executando = false;
-                        }
-
                         break;
                     case 2:
-                        int contador = 1;
-                        foreach (var paciente in pacientes)
-                        {
-                            Console.WriteLine($"Paciente #{contador}");
-                            Console.WriteLine($"Nome: {paciente.Nome}");
-                            Console.WriteLine($"Classe: {paciente.Classe}");
-                            Console.WriteLine($"Objetivo: {paciente.Objetivo}");
-                            Console.WriteLine($"Peso: {paciente.Peso}");
-                            Console.WriteLine($"Altura: {paciente.Altura}");
-                            Console.WriteLine($"IMC: {paciente.Imc}");
-                            Console.WriteLine("-------------");
 
+                        if (pacientes.Count == 0) {
+                            Console.WriteLine("Sua Busca nao Retornou Resultados!");
+                        }
+                        
+                            int contador = 1;
+                            foreach (var paciente in pacientes)
+                            {
+                                Console.WriteLine($"Paciente #{contador}");
+                                Console.WriteLine($"Nome: {paciente.Nome}");
+                                Console.WriteLine($"Classe: {paciente.Classe}");
+                                Console.WriteLine($"Objetivo: {paciente.Objetivo}");
+                                Console.WriteLine($"Peso: {paciente.Peso}");
+                                Console.WriteLine($"Altura: {paciente.Altura}");
+                                Console.WriteLine($"IMC: {paciente.Imc}");
+                                Console.WriteLine("-------------");
+                                contador++;
                             
                         }
+                    
+
                         break;
                     case 3:
 
+                        bool encontrado = false;
                         Console.WriteLine("Qual o Nome do Paciente que voce deseja buscar?");
                         string buscaNome = Console.ReadLine();
 
@@ -82,9 +74,16 @@ namespace IMCManager
                                 Console.WriteLine($"Altura: {pacientes[i].Altura}");
                                 Console.WriteLine($"IMC: {pacientes[i].Imc}");
                                 Console.WriteLine("-------------");
+
+                                encontrado = true;
                             }
 
                         }
+                         if (encontrado == false)
+                            {
+                                Console.WriteLine("Paciente não encontrado!");  
+                            }
+                            
                         Console.WriteLine("Deseja Realizar outra Operação?");
                             Console.WriteLine("1 - Sim");
                             Console.WriteLine("2 - Não");
@@ -100,6 +99,7 @@ namespace IMCManager
                             }
                         break;
                     case 4:
+                        bool encontrado2 = false;
                         int contador2 = 1;
                         foreach (var paciente in pacientes)
                         {
@@ -112,13 +112,21 @@ namespace IMCManager
                             Console.WriteLine($"IMC: {paciente.Imc}");
                             Console.WriteLine("-------------");
 
+                            contador2++;
+                            encontrado2 = true;
+
                         }
-                        Console.WriteLine("Qual o Número do paciente que deseja Editar?");
-                        int numEditar = int.Parse(Console.ReadLine());
 
-                        pacientes.RemoveAt(numEditar - 1);
+                        if (encontrado2 == false)
+                        {
+                            Console.WriteLine("Paciente nao encontrado!");
+                        } else {
+                            Console.WriteLine("Qual o Número do paciente que deseja Excluir?");
+                            int numDelete = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Deseja Realizar outra Operação?");
+                            pacientes.RemoveAt(numDelete - 1);
+
+                            Console.WriteLine("Deseja Realizar outra Operação?");
                             Console.WriteLine("1 - Sim");
                             Console.WriteLine("2 - Não");
 
@@ -131,9 +139,16 @@ namespace IMCManager
                             {
                                 executando = false;
                             }
+                        }
+                        break;
+                        case 5:
+                        Console.WriteLine("Finalizando a Execução do Programa!");
+                        executando = false;
                         break;
                     default:
-                        executando = false;
+                    Console.WriteLine("Erro: Opção Inválida!");
+                        
+
                         break;
 
 
