@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IMCManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf441592c9c99a04a9c26ec2d4917a05c62f5d62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70cab4428d14ce0e41b09dcab2c96e33fada7db2")]
 [assembly: System.Reflection.AssemblyProductAttribute("IMCManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IMCManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
