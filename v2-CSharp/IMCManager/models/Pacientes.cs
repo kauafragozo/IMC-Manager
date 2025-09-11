@@ -60,21 +60,12 @@ namespace IMCManager.Models
             Console.WriteLine("Agora,Insira o peso (em kilogramas) do Paciente:");
             this.Peso = double.Parse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture);
 
-            double peso;
-            while (!double.TryParse(Console.ReadLine(), out peso) || Peso >= 0)
-            {
-                
-                Console.Write("Peso inválido! Digite um valor numérico positivo: ");
-            }
-
+          
+            
             Console.WriteLine("Agora, Insira o Altura (em metros) do Paciente:");
             this.Altura = double.Parse(Console.ReadLine().Replace(",", "."), CultureInfo.InvariantCulture);
 
-             double altura;
-            while (!double.TryParse(Console.ReadLine(), out altura) || Altura >= 0)
-            {
-                Console.Write("Altura inválida! Digite um valor numérico positivo: ");
-            }
+            
 
             Console.WriteLine("Qual o Objetivo do Paciente?");
             Console.WriteLine("1 - Perder Peso");
