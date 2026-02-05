@@ -49,14 +49,14 @@ namespace ImcProgram
                         Console.ReadKey();
                         break;
                     case 7:
-
+                        Console.Clear();
                         Console.WriteLine("Insira o Peso do Paciente: ");
                         string inputpeso = Console.ReadLine().Replace(',', ('.'));
                         if (!double.TryParse(
                             inputpeso,
                             System.Globalization.NumberStyles.Any,
                             System.Globalization.CultureInfo.InvariantCulture,
-                            out double peso ))
+                            out double peso))
                         {
                             Console.WriteLine("Peso Inválido! ");
                             Console.ReadKey();
@@ -66,7 +66,7 @@ namespace ImcProgram
                         Console.WriteLine("Insira a Altura do Paciente: ");
                         string inputaltura = Console.ReadLine().Replace(',', '.');
 
-                        if(!double.TryParse(
+                        if (!double.TryParse(
                             inputaltura,
                             System.Globalization.NumberStyles.Any,
                             System.Globalization.CultureInfo.InvariantCulture,
@@ -78,6 +78,7 @@ namespace ImcProgram
                         pacientes.PaAltura = altura;
 
                         double imc = manager.CalcularImc();
+                        Console.Clear();
                         Console.WriteLine($"O Peso é: {pacientes.PaPeso}");
                         Console.WriteLine($"A Altura é: {altura}");
                         Console.WriteLine($"O IMC é: {imc} ");
@@ -86,9 +87,27 @@ namespace ImcProgram
                         break;
                     case 8:
                         Console.Clear();
-                        executando = false;
+                        Console.WriteLine("Tem certeza que deseja sair do sistema? ( s/n)");
+                        string resp = Console.ReadLine();
+                        if (resp == "n" || resp == "N")
+                        {
+                            executando = true;
+                        }
+                        else if (resp == "s" || resp == "S")
+                        {
+                            Console.Clear();
+                            executando = false;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("= Erro! Opção Inválida =");
+                            Console.ReadKey();
+                            executando = true;
+                        }
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("= Erro: Opção Inválida! =");
                         Console.ReadKey();
                         break;

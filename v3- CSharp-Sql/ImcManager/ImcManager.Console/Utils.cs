@@ -18,7 +18,7 @@ namespace ImcProgram.Utls
             Console.WriteLine("= 5. Excluir Paciente =");
             Console.WriteLine("= 6. Consultar Classificações =");
             Console.WriteLine("= 7. Calcular IMC =");
-            Console.WriteLine("= 8. Sair=");
+            Console.WriteLine("= 8. Sair =");
         }
 
 

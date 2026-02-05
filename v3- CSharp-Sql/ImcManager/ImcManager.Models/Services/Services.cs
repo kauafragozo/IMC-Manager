@@ -16,6 +16,7 @@ namespace ImcProgram.Service
         }
         public double CalcularImc()
         {
+
             double ImcResultado = paciente.PaPeso / (paciente.PaAltura * paciente.PaAltura);
             return ImcResultado;
         }
