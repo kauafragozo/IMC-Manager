@@ -11,6 +11,8 @@ namespace ImcProgram
         {
 
             Utils utils = new Utils();
+            Pacientes pacientes = new Pacientes();
+            Manager manager = new Manager(pacientes);
 
             Console.WriteLine("=== IMC Manager ===");
             Console.WriteLine("== Seja bem-vindo(a)! ==");
@@ -47,7 +49,40 @@ namespace ImcProgram
                         Console.ReadKey();
                         break;
                     case 7:
-                        Console.WriteLine("= 7 =");
+
+                        Console.WriteLine("Insira o Peso do Paciente: ");
+                        string inputpeso = Console.ReadLine().Replace(',', ('.'));
+                        if (!double.TryParse(
+                            inputpeso,
+                            System.Globalization.NumberStyles.Any,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            out double peso ))
+                        {
+                            Console.WriteLine("Peso Inválido! ");
+                            Console.ReadKey();
+                        }
+                        pacientes.PaPeso = peso;
+
+                        Console.WriteLine("Insira a Altura do Paciente: ");
+                        string inputaltura = Console.ReadLine().Replace(',', '.');
+
+                        if(!double.TryParse(
+                            inputaltura,
+                            System.Globalization.NumberStyles.Any,
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            out double altura))
+                        {
+                            Console.WriteLine("Peso Inválido! ");
+                            Console.ReadKey();
+                        }
+                        pacientes.PaAltura = altura;
+
+                        double imc = manager.CalcularImc();
+                        Console.WriteLine($"O Peso é: {pacientes.PaPeso}");
+                        Console.WriteLine($"A Altura é: {altura}");
+                        Console.WriteLine($"O IMC é: {imc} ");
+                        Console.WriteLine("= Pressione qualquer tecla para continuar =");
+                        Console.ReadKey();
                         break;
                     case 8:
                         Console.Clear();
@@ -55,29 +90,11 @@ namespace ImcProgram
                         break;
                     default:
                         Console.WriteLine("= Erro: Opção Inválida! =");
+                        Console.ReadKey();
                         break;
                 }
 
             }
-
-
-
-
-            // Pacientes pacientes = new Pacientes();
-            // Manager manager = new Manager(pacientes);
-
-            // Console.WriteLine("Insira o Peso do Paciente: ");
-            // double peso = double.Parse(Console.ReadLine());
-            // pacientes.PaPeso = peso;
-
-            // Console.WriteLine("Insira a Altura do Paciente: ");
-            // double altura = double.Parse(Console.ReadLine());
-            // pacientes.PaAltura = altura;
-
-            // double imc = manager.CalcularImc();
-            // Console.WriteLine($"O Peso é: {peso}");
-            // Console.WriteLine($"A Altura é: {altura}");
-            // Console.WriteLine($"O IMC é: {imc} ");
 
 
 
