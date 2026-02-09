@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Data;
 using ImcProgram.Entities;
 using ImcProgram.Service;
 using ImcProgram.Utls;
+using ImcProgram.Data;
+using Dapper;
+using Microsoft.Data.SqlClient;
 
 namespace ImcProgram
 {
@@ -13,6 +17,8 @@ namespace ImcProgram
             Utils utils = new Utils();
             Pacientes pacientes = new Pacientes();
             Manager manager = new Manager(pacientes);
+            DataContext context = new DataContext();
+            
 
             Console.WriteLine("=== IMC Manager ===");
             Console.WriteLine("== Seja bem-vindo(a)! ==");
@@ -30,7 +36,85 @@ namespace ImcProgram
                 switch (op)
                 {
                     case 1:
-                        Console.WriteLine("= 1 =");
+                        // Console.WriteLine("= 1 =");
+                        // string connectionString = "Server=localhost\\SQLEXPRESS;Database=IMCMANAGERDB;TrustServerCertificate=true;Trusted_Connection=true;";
+
+                        // IDbConnection dbConnection = new SqlConnection(connectionString);
+
+                        // string command = "SELECT GETDATE()";
+
+                        // DateTime now = dbConnection.QuerySingle<DateTime>(command);
+
+                        // Console.WriteLine(now);
+
+                        // executando = false;
+
+                        // Console.WriteLine("Insira o nome do paciente: ");
+                        // pacientes.PaNome = Console.ReadLine();
+                        // Console.WriteLine("Insira Peso do Paciente");
+                        // string inputpeso = Console.ReadLine().Replace(',', ('.'));
+                        // if (!double.TryParse(
+                        //     inputpeso,
+                        //     System.Globalization.NumberStyles.Any,
+                        //     System.Globalization.CultureInfo.InvariantCulture,
+                        //     out double peso))
+                        // {
+                        //     Console.WriteLine("Peso Inválido! ");
+                        //     Console.ReadKey();
+                        // }
+                        // pacientes.PaPeso = peso;
+
+
+                        // Console.WriteLine("Insira a altura do Paciente");
+                        // string inputaltura = Console.ReadLine().Replace(',', '.');
+
+                        // if (!double.TryParse(
+                        //     inputaltura,
+                        //     System.Globalization.NumberStyles.Any,
+                        //     System.Globalization.CultureInfo.InvariantCulture,
+                        //     out double altura))
+                        // {
+                        //     Console.WriteLine("Peso Inválido! ");
+                        //     Console.ReadKey();
+                        // }
+                        // pacientes.PaAltura = altura;
+
+                        // double imc = manager.CalcularImc();
+                        // manager.ClassificarImc(imc);
+
+                        // string classificacao = pacientes.PaClasse;
+
+                        // Console.WriteLine("Qual o Objetivo do Paciente? ");
+                        // string objetivo = Console.ReadLine();
+                        // pacientes.PaObjetivo = objetivo;
+                        // string commandCreate = @"INSERT INTO TPACIENTES (PNOME, PCLASSE, POBJETIVO, PPESO, PALTURA, PIMC, PCAD) 
+                        //  VALUES (@nome,
+                        //  @classe,
+                        //  @objetivo,
+                        //  @peso,
+                        //  @altura,
+                        //  @imc,
+                        //  @cad
+                        //  )";
+
+
+
+                        // Console.WriteLine(commandCreate);
+
+                        // int result = dbConnection.Execute(commandCreate, new{
+                        //     nome = pacientes.PaNome,
+                        //    classe = pacientes.PaClasse,
+                        //     objetivo = pacientes.PaObjetivo,
+                        //     peso = pacientes.PaPeso,
+                        //     altura= pacientes.PaAltura,
+                        //     imc = pacientes.PaImc,
+                        //     cad = DateTime.Now,
+                        // });
+                            
+                        
+
+                        // Console.WriteLine(result);
+                        // executando = false;
                         break;
                     case 2:
                         Console.WriteLine("= 2 =");
