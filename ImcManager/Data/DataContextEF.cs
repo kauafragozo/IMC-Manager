@@ -19,7 +19,7 @@ namespace ImcProgram.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Paciente>().ToTable("TPACIENTES");
+            modelBuilder.Entity<Paciente>().ToTable("TPACIENTES").HasKey(p => p.PID);
         }
 
 
