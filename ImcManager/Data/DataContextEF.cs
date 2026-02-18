@@ -1,8 +1,8 @@
-using ImcProgram.Entities;
+using IMCManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 
-namespace ImcProgram.Context
+namespace IMCManager.Data
 {
 
     public class DataContextEF : DbContext

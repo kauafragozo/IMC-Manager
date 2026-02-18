@@ -1,9 +1,10 @@
+using System.Data.Common;
 using System.Reflection.PortableExecutable;
-using ImcProgram.Entities;
-using ImcProgram.Service;
+using IMCManager.Models;
+using IMCManager.Services;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
-namespace ImcProgram.UI
+namespace IMCManager.UI
 {
 
     public static class ImcUI
@@ -56,13 +57,13 @@ namespace ImcProgram.UI
             Console.ReadKey();
         }
 
-        public static (double peso, double altura) LerDadosCalculoIMC()
+        public static (decimal peso, decimal altura) LerDadosCalculoIMC()
         {
 
-            double peso;
-            double altura;
+            decimal peso;
+            decimal altura;
             Console.WriteLine("Digite o Peso do Paciente: ");
-            while (!double.TryParse(Console.ReadLine().Replace(".", ","), out peso))
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out peso))
             {
                 Console.Clear();
                 Console.WriteLine("Digite um valor válido!");
@@ -70,7 +71,7 @@ namespace ImcProgram.UI
             }
 
             Console.WriteLine("Digite a altura do Paciente: ");
-            while (!double.TryParse(Console.ReadLine().Replace(".", ","), out altura))
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out altura))
             {
                 Console.Clear();
                 Console.WriteLine("Digite um valor válido! ");
@@ -81,7 +82,7 @@ namespace ImcProgram.UI
 
         }
 
-        public static (string nome, string objetivo, double peso, double altura) LerDadosCadastro()
+        public static (string nome, string objetivo, decimal peso, decimal altura) LerDadosCadastro()
         {
 
             Console.Clear();
@@ -89,46 +90,87 @@ namespace ImcProgram.UI
             Console.WriteLine("Digite o nome do(a) Paciente: ");
             string nome = Console.ReadLine();
 
-            Console.Clear();
-            Console.WriteLine("=== CADASTRO DE PACIENTE ===");
             Console.WriteLine("Selecione o objetivo do Paciente: ");
             string objetivo = ImcUI.AtribuirObjetivo();
 
-            double peso;
-            Console.Clear();
-            Console.WriteLine("=== CADASTRO DE PACIENTE ===");
+            decimal peso;
             Console.WriteLine("Digite o Peso do(a) Paciente: ");
-            while (!double.TryParse(Console.ReadLine().Replace(".", ","), out  peso))
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out peso))
             {
                 Console.Clear();
                 Console.WriteLine("Digite um valor válido!");
                 Console.ReadKey();
             }
-            double altura;
-            Console.Clear();
-            Console.WriteLine("=== CADASTRO DE PACIENTE ===");
+            decimal altura; ;
             Console.WriteLine("Digite a altura do(a) Paciente: ");
 
-            while (!double.TryParse(Console.ReadLine().Replace(".", ","), out altura))
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out altura))
             {
                 Console.Clear();
                 Console.WriteLine("Digite um valor válido! ");
                 Console.ReadKey();
             }
 
-            return(nome, objetivo, peso, altura);
+            return (nome, objetivo, peso, altura);
 
         }
 
         public static string AtribuirObjetivo()
         {
-            Console.Clear();
+            Console.WriteLine("= Objetivos =");
             Console.WriteLine("1 - Perder Peso");
             Console.WriteLine("2 - Manter Peso ");
             Console.WriteLine("3 - Ganhar Massa Muscular");
             Console.WriteLine("4 - Melhorar Condicionamento Fisico");
             string objetivo = Console.ReadLine();
             return objetivo;
+        }
+        public static string LerDadosBusca()
+        {
+            Console.Clear();
+            Console.WriteLine("Qual o nome ou inicial do nome do(a) Paciente que deseja buscar?");
+            return Console.ReadLine();
+        }
+
+        public static int LerId()
+        {
+            Console.Clear();
+            Console.WriteLine("Qual o ID do Paciente? ");
+            int.TryParse(Console.ReadLine(), out int id);
+            return id;
+
+        }
+
+        public static (string nome, string objetivo, decimal peso, decimal altura) LerDadosEdição()
+        {
+            decimal peso = 0;
+            decimal altura = 0;
+            Console.Clear();
+            Console.WriteLine("== Edição de Paciente ==");
+            Console.WriteLine("Qual o novo nome? (Deixe em branco para manter o mesmo)");
+            string nome = Console.ReadLine();
+
+            Console.WriteLine("Qual o objetivo do Paciente? (Deixe em branco para mater o mesmo)");
+            string objetivo = AtribuirObjetivo();
+
+            Console.WriteLine("Qual o Peso do paciente? (Deixe em branco para manter o mesmo)");
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out peso))
+            {
+                Console.Clear();
+                Console.WriteLine("Digite um valor válido!");
+                Console.ReadKey();
+            }
+
+            Console.WriteLine("Qual a altura do paciente?");
+            while(!decimal.TryParse(Console.ReadLine().Replace(".",","), out altura))
+            {
+                Console.Clear();
+                Console.WriteLine("Digite um valor válido!");
+                Console.ReadKey();
+            }
+            
+            return(nome,objetivo,peso,altura);
+            
         }
 
         public static void ExibirSucesso()
@@ -145,5 +187,22 @@ namespace ImcProgram.UI
             Console.ReadKey();
         }
 
+        public static void MostrarLista(List<Paciente> pacientes)
+        {
+            Console.Clear();
+            Console.WriteLine("=== Lista de Pacientes ===");
+
+            if (pacientes.Count <= 0) { Console.WriteLine("Nenhum registro encontrado "); }
+            else
+            {
+                foreach (var p in pacientes)
+                {
+                    Console.WriteLine("--------------");
+                    Console.WriteLine($"| ID: {p.PID} | Nome: {p.PNome} | Classificação: {p.PClasse} | Objetivo: {p.PObjetivo} | Peso: {p.PPeso} | Altura: {p.PAltura:F2} | IMC: {p.PImc} | Data Cadastro:{p.PCad}");
+                    Console.WriteLine("--------------");
+                }
+            }
+            Console.ReadKey();
+        }
     }
 }

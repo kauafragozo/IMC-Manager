@@ -1,6 +1,6 @@
 using System;
 
-namespace ImcProgram.Entities
+namespace IMCManager.Models
 
 {
 
@@ -11,9 +11,9 @@ namespace ImcProgram.Entities
         public string PNome { get; set; }
         public string PClasse { get; set; }
         public string PObjetivo { get; set; }
-        public double PPeso { get; set; }
-        public double PAltura { get; set; }
-        public double PImc { get; set; }
+        public decimal PPeso { get; set; }
+        public decimal PAltura { get; set; }
+        public decimal PImc { get; set; }
         public DateTime PCad { get; set; }
 
 

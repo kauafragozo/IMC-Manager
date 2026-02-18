@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
-using ImcProgram.Entities;
-using ImcProgram.Service;
-using ImcProgram.Context;
-using ImcProgram.UI;
+using IMCManager.Models;
+using IMCManager.Services;
+using IMCManager.Data;
+using IMCManager.UI;
 using Microsoft.Data.SqlClient;
 
-namespace ImcProgram
+namespace IMCManager
 {
     internal class Program
     {
@@ -42,10 +42,15 @@ namespace ImcProgram
                         }
                         break;
                     case 2:
-                        Console.WriteLine("= 2 =");
+                        var lista = service.ListarTodos();
+                        ImcUI.MostrarLista(lista);
+
                         break;
                     case 3:
-                        Console.WriteLine("= 3 =");
+                        string nomeBusca = ImcUI.LerDadosBusca();
+                        var resultados = service.BuscarNome(nomeBusca);
+
+                        ImcUI.MostrarLista(resultados);
                         break;
                     case 4:
                         Console.WriteLine("= 4 =");
@@ -59,9 +64,9 @@ namespace ImcProgram
                     case 7:
                         var dados = ImcUI.LerDadosCalculoIMC();
 
-                        double resultado = service.CalcularImc(dados.peso, dados.altura);
+                        decimal resultado = service.CalcularImc(dados.peso, dados.altura);
                         string classImc = service.ClassificarImc(resultado);
-                        Console.WriteLine($"O IMC é: {resultado} - Classificação: {classImc}");
+                        Console.WriteLine($"O IMC é: {resultado:F2} - Classificação: {classImc}");
                         Console.ReadKey();
                         break;
                     case 8:

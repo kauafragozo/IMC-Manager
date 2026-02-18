@@ -1,12 +1,12 @@
 using System;
-using ImcProgram.Context;
-using ImcProgram.Entities;
-using ImcProgram.UI;
+using IMCManager.Data;
+using IMCManager.Models;
+using IMCManager.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace ImcProgram.Service
+namespace IMCManager.Services
 {
     public class PacienteService
     {
@@ -19,32 +19,32 @@ namespace ImcProgram.Service
         }
 
         Paciente paciente = new Paciente();
-        public double CalcularImc(double peso, double altura)
+        public decimal CalcularImc(decimal peso, decimal altura)
         {
             if (peso <= 0) { throw new Exception("Peso deve ser maior que zero!"); }
             if (altura <= 0) { throw new Exception("Altura deve ser maior que zero!"); }
-            double Imc = peso / (altura * altura);
+            decimal Imc = peso / (altura * altura);
             return Imc;
         }
 
 
-        public string ClassificarImc(double Imc)
+        public string ClassificarImc(decimal Imc)
         {
 
-            if (Imc < 18.5) { return "Abaixo do Peso"; }
-            else if (Imc < 25) { return "Peso Normal"; }
-            else if (Imc < 30) { return "Sobre Peso"; }
-            else if (Imc < 35) { return "Obesidade Grau I"; }
-            else if (Imc < 40) { return "Obesidade Grau II"; }
+            if (Imc < 18.5m) { return "Abaixo do Peso"; }
+            else if (Imc < 25m) { return "Peso Normal"; }
+            else if (Imc < 30m) { return "Sobre Peso"; }
+            else if (Imc < 35m) { return "Obesidade Grau I"; }
+            else if (Imc < 40m) { return "Obesidade Grau II"; }
             else { return "Obesidade Grau III"; }
         }
 
-        public void Cadastrar(string nome, string objetivo, double peso, double altura)
+        public void Cadastrar(string nome, string objetivo, decimal peso, decimal altura)
         {
             if(altura <= 0 ){ throw new InvalidOperationException("Altura Inválida");}
             if(peso <= 0){ throw new InvalidOperationException("Peso Inválido");}
 
-            double imc = peso / (altura * altura);
+            decimal imc = peso / (altura * altura);
 
             string classificacao = ClassificarImc(imc);
 
@@ -71,8 +71,22 @@ namespace ImcProgram.Service
             }
         }
 
+        public List<Paciente> ListarTodos()
+        {
+            return _context.Pacientes.ToList();
+        }
+
+        public List<Paciente> BuscarNome(string nome)
+        {
+             if(string.IsNullOrWhiteSpace(nome))
+             return new List<Paciente>();
+
+             return _context.Pacientes.Where(p => p.PNome.Contains(nome)).OrderBy(p => p.PNome).ToList();
 
 
+        }
+
+    
     }
 
 }
