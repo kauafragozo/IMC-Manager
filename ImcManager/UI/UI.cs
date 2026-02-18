@@ -1,4 +1,5 @@
 using System.Data.Common;
+using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
 using IMCManager.Models;
 using IMCManager.Services;
@@ -122,8 +123,30 @@ namespace IMCManager.UI
             Console.WriteLine("2 - Manter Peso ");
             Console.WriteLine("3 - Ganhar Massa Muscular");
             Console.WriteLine("4 - Melhorar Condicionamento Fisico");
-            string objetivo = Console.ReadLine();
+            if (!int.TryParse(Console.ReadLine(), out int e))
+                throw new Exception("Entrada inválida!");
+            string objetivo;
+            switch (e)
+            {
+                case 1:
+                    objetivo = "1 - Perder Peso";
+                    break;
+                case 2:
+                    objetivo = "2 - Manter Peso ";
+                    break;
+                case 3:
+                    objetivo = "3 - Ganhar Massa Muscular";
+                    break;
+                case 4:
+                    objetivo = "4 - Melhorar Condicionamento Fisico";
+                    break;
+                default:
+                    throw new Exception("Opção inválida!");
+                    
+            }
             return objetivo;
+
+
         }
         public static string LerDadosBusca()
         {
@@ -141,7 +164,7 @@ namespace IMCManager.UI
 
         }
 
-        public static (string nome, string objetivo, decimal peso, decimal altura) LerDadosEdição()
+        public static (string novoNome, string novoObjetivo, decimal novoPeso, decimal novoAltura) LerDadosEdição()
         {
             decimal peso = 0;
             decimal altura = 0;
@@ -162,15 +185,15 @@ namespace IMCManager.UI
             }
 
             Console.WriteLine("Qual a altura do paciente?");
-            while(!decimal.TryParse(Console.ReadLine().Replace(".",","), out altura))
+            while (!decimal.TryParse(Console.ReadLine().Replace(".", ","), out altura))
             {
                 Console.Clear();
                 Console.WriteLine("Digite um valor válido!");
                 Console.ReadKey();
             }
-            
-            return(nome,objetivo,peso,altura);
-            
+
+            return (nome, objetivo, peso, altura);
+
         }
 
         public static void ExibirSucesso()
@@ -198,7 +221,7 @@ namespace IMCManager.UI
                 foreach (var p in pacientes)
                 {
                     Console.WriteLine("--------------");
-                    Console.WriteLine($"| ID: {p.PID} | Nome: {p.PNome} | Classificação: {p.PClasse} | Objetivo: {p.PObjetivo} | Peso: {p.PPeso} | Altura: {p.PAltura:F2} | IMC: {p.PImc} | Data Cadastro:{p.PCad}");
+                    Console.WriteLine($"| ID: {p.PID} | Nome: {p.PNome} | Classificação: {p.PClasse} | Objetivo: {p.PObjetivo} | Peso: {p.PPeso}kg | Altura: {p.PAltura:F2}m | IMC: {p.PImc:F2} | Data Cadastro:{p.PCad}");
                     Console.WriteLine("--------------");
                 }
             }

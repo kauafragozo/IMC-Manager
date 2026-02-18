@@ -3,6 +3,7 @@ using IMCManager.Data;
 using IMCManager.Models;
 using IMCManager.UI;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 
 
@@ -41,8 +42,8 @@ namespace IMCManager.Services
 
         public void Cadastrar(string nome, string objetivo, decimal peso, decimal altura)
         {
-            if(altura <= 0 ){ throw new InvalidOperationException("Altura Inválida");}
-            if(peso <= 0){ throw new InvalidOperationException("Peso Inválido");}
+            if (altura <= 0) { throw new InvalidOperationException("Altura Inválida"); }
+            if (peso <= 0) { throw new InvalidOperationException("Peso Inválido"); }
 
             decimal imc = peso / (altura * altura);
 
@@ -57,18 +58,51 @@ namespace IMCManager.Services
                 PAltura = altura,
                 PImc = imc,
                 PCad = DateTime.Now
-                
+
             };
             try
             {
-            _context.Pacientes.Add(paciente);
-            _context.SaveChanges();
-            }catch(Exception ex)
+                _context.Pacientes.Add(paciente);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("Erro real: ");
                 Console.WriteLine(ex.InnerException?.Message ?? ex.Message);
                 Console.ReadKey();
             }
+        }
+
+        public void Atualizar(int id, string novoNome, string novoObjetivo, decimal novoPeso, decimal novoAltura)
+        {
+           decimal novoImc = novoPeso / (novoAltura * novoAltura);
+
+             string novoClasse = ClassificarImc(novoImc);
+
+            var paciente = _context.Pacientes.FirstOrDefault(p => p.PID == id);
+
+            if (paciente == null) { throw new Exception("Pessoa não encontrada! ");}
+            if (!string.IsNullOrEmpty(novoNome))
+            {
+                paciente.PNome = novoNome;
+            }
+            if (!string.IsNullOrEmpty(novoClasse))
+            {
+                paciente.PClasse = novoClasse;
+            }
+            if (!string.IsNullOrEmpty(novoObjetivo))
+            {
+                paciente.PObjetivo = novoObjetivo;
+            }
+
+            
+            paciente.PClasse = novoClasse;
+            paciente.PPeso = novoPeso;
+            paciente.PAltura = novoAltura;
+            paciente.PImc = novoImc;
+            paciente.PCad = DateTime.Now;
+
+            _context.SaveChanges();
         }
 
         public List<Paciente> ListarTodos()
@@ -78,15 +112,15 @@ namespace IMCManager.Services
 
         public List<Paciente> BuscarNome(string nome)
         {
-             if(string.IsNullOrWhiteSpace(nome))
-             return new List<Paciente>();
+            if (string.IsNullOrWhiteSpace(nome))
+                return new List<Paciente>();
 
-             return _context.Pacientes.Where(p => p.PNome.Contains(nome)).OrderBy(p => p.PNome).ToList();
+            return _context.Pacientes.Where(p => p.PNome.Contains(nome)).OrderBy(p => p.PNome).ToList();
 
 
         }
 
-    
+
     }
 
 }

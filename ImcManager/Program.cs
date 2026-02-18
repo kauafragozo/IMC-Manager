@@ -5,6 +5,7 @@ using IMCManager.Services;
 using IMCManager.Data;
 using IMCManager.UI;
 using Microsoft.Data.SqlClient;
+using System.IO.Pipes;
 
 namespace IMCManager
 {
@@ -53,7 +54,17 @@ namespace IMCManager
                         ImcUI.MostrarLista(resultados);
                         break;
                     case 4:
-                        Console.WriteLine("= 4 =");
+                        try
+                        {
+                            int id = ImcUI.LerId();
+                            var editados = ImcUI.LerDadosEdição();
+
+                            service.Atualizar(id, editados.novoNome, editados.novoObjetivo, editados.novoPeso, editados.novoAltura);
+                        }
+                        catch (Exception ex)
+                        {
+                            ImcUI.ExibirErro(ex.Message);
+                        }
                         break;
                     case 5:
                         Console.WriteLine("= 5 =");
