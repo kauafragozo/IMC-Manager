@@ -227,5 +227,14 @@ namespace IMCManager.UI
             }
             Console.ReadKey();
         }
+
+        public static bool ConfirmarExclusão()
+        {
+            Console.Clear();
+            Console.WriteLine("Tem certeza que deseja excluir? (s/n)");
+            string resposta = Console.ReadLine();
+
+            return resposta.ToLower() == "s";
+        }
     }
 }

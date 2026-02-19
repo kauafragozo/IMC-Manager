@@ -67,7 +67,20 @@ namespace IMCManager
                         }
                         break;
                     case 5:
-                        Console.WriteLine("= 5 =");
+                        try
+                        {
+                            int id = ImcUI.LerId();
+                            if (ImcUI.ConfirmarExclusão())
+                            {
+                                service.Excluir(id);
+                                ImcUI.ExibirSucesso();
+                            }
+
+                        }catch(Exception ex)
+                        {
+                            ImcUI.ExibirErro(ex.Message);
+                            Console.ReadKey();
+                        }
                         break;
                     case 6:
                         ImcUI.ConsultarClassificações();

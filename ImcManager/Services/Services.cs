@@ -105,6 +105,20 @@ namespace IMCManager.Services
             _context.SaveChanges();
         }
 
+        public void Excluir(int id)
+        {
+          var paciente = _context.Pacientes.FirstOrDefault(p => p.PID == id);  
+
+          if(paciente == null)
+            {
+                throw new Exception ("Paciente nao encontrado! ");
+
+            }
+
+            _context.Pacientes.Remove(paciente);
+            _context.SaveChanges();
+        }
+
         public List<Paciente> ListarTodos()
         {
             return _context.Pacientes.ToList();
