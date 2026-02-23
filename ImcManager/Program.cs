@@ -5,6 +5,7 @@ using IMCManager.Services;
 using IMCManager.Data;
 using IMCManager.UI;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System.IO.Pipes;
 
 namespace IMCManager
@@ -13,14 +14,14 @@ namespace IMCManager
     {
         static void Main(string[] args)
         {
+            IConfiguration config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
+            DataContextEF ef = new DataContextEF(config);
+            PacienteService service = new PacienteService(ef);
+
             Console.WriteLine("=== IMC Manager ===");
             Console.WriteLine("== Seja bem-vindo(a)! ==");
-
             Console.WriteLine("Aperte qualquer tecla para continuar!");
             Console.ReadKey();
-
-            DataContextEF ef = new DataContextEF();
-            PacienteService service = new PacienteService(ef);
 
             bool executando = true;
             while (executando)
@@ -76,7 +77,8 @@ namespace IMCManager
                                 ImcUI.ExibirSucesso();
                             }
 
-                        }catch(Exception ex)
+                        }
+                        catch (Exception ex)
                         {
                             ImcUI.ExibirErro(ex.Message);
                             Console.ReadKey();

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ImcManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7db1a155bd317e151d5a32d2063102ad6f2dd660")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+303be570dff86f2a4ed738c1a395e97fb37b517e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ImcManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ImcManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
