@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 using IMCManager.Models;
-using IMCManager.Services;
+using IMCManager.Services.Pacientes;
 using IMCManager.Data;
 using IMCManager.UI;
 using Microsoft.Data.SqlClient;

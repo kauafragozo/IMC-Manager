@@ -2,8 +2,9 @@ using System.Data.Common;
 using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
 using IMCManager.Models;
-using IMCManager.Services;
+using IMCManager.Services.Pacientes;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.Identity.Client;
 
 namespace IMCManager.UI
 {
@@ -142,7 +143,7 @@ namespace IMCManager.UI
                     break;
                 default:
                     throw new Exception("Opção inválida!");
-                    
+
             }
             return objetivo;
 
@@ -225,7 +226,9 @@ namespace IMCManager.UI
                     Console.WriteLine("--------------");
                 }
             }
+         
             Console.ReadKey();
+
         }
 
         public static bool ConfirmarExclusão()

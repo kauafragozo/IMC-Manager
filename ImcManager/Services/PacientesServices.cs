@@ -7,7 +7,7 @@ using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace IMCManager.Services
+namespace IMCManager.Services.Pacientes
 {
     public class PacienteService
     {
