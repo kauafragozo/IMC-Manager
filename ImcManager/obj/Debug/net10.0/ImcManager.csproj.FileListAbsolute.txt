@@ -207,3 +207,10 @@ C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcMan
 C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\obj\Debug\net10.0\ImcManager.pdb
 C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\obj\Debug\net10.0\ImcManager.genruntimeconfig.cache
 C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\obj\Debug\net10.0\ref\ImcManager.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.Configuration.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\User\Desktop\Suporte-Kaua\KAUÃ - PESSOAL\IMCManager\IMC-Manager\ImcManager\bin\Debug\net10.0\appSettings.json

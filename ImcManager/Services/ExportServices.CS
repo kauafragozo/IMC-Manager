@@ -26,7 +26,7 @@ namespace ImcManager.Services.Export
             string pasta = Path.Combine(path, "Docs");
 
             Directory.CreateDirectory(pasta);
-            string nomeArquivo = $"Pacientes{DateTime.Now:yyyyMMdd}.csv";
+            string nomeArquivo = $"Pacientes{DateTime.Now:yyyyMMdd_HHmmss}.csv";
             string pathCompleto = Path.Combine(pasta, nomeArquivo);
 
             using (StreamWriter sw = new StreamWriter(pathCompleto, false, Encoding.UTF8))
@@ -35,6 +35,7 @@ namespace ImcManager.Services.Export
                 foreach (var p in pacientes)
                 {
                     sw.WriteLine($"{p.PID};{p.PNome};{p.PClasse};{p.PPeso};{p.PAltura};{p.PImc};{p.PCad}");
+                    
                 }
             }
             return pathCompleto;

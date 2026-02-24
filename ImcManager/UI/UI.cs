@@ -1,6 +1,7 @@
 using System.Data.Common;
 using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
+using ImcManager.Services.Export;
 using IMCManager.Models;
 using IMCManager.Services.Pacientes;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
@@ -226,8 +227,26 @@ namespace IMCManager.UI
                     Console.WriteLine("--------------");
                 }
             }
-         
             Console.ReadKey();
+            Console.Clear();
+            Console.WriteLine("1 - Exportar para CSV");
+            Console.WriteLine("2 - Menu");
+            int opcao;
+            while(!int.TryParse(Console.ReadLine() , out opcao))
+            {
+                Console.WriteLine("Digite um número Válido! ");
+                Console.ReadKey();
+            }
+
+            if(opcao == 1)
+            {
+                var exportservice = new ExportService();
+                exportservice.ExportarCSV(pacientes);
+                Console.WriteLine("Operação Concluida com sucesso!");
+                Console.ReadKey();
+            }
+
+            
 
         }
 
