@@ -11,7 +11,7 @@ using IMCManager.Models;
 
 namespace ImcManager.Services.Export
 {
-    public class ExportService()
+    public class ExportService
     {
 
         public string ExportarCSV(List<Paciente> pacientes)
@@ -34,7 +34,7 @@ namespace ImcManager.Services.Export
                 sw.WriteLine("ID;Nome;Classificação;Objetivo;Peso;Altura;IMC;DataCadastro");
                 foreach (var p in pacientes)
                 {
-                    sw.WriteLine($"{p.PID};{p.PNome};{p.PClasse};{p.PPeso};{p.PAltura};{p.PImc};{p.PCad}");
+                    sw.WriteLine($"{p.PID};{p.PNome};{p.PClasse};{p.PObjetivo};{p.PPeso};{p.PAltura};{p.PImc};{p.PCad}");
                     
                 }
             }

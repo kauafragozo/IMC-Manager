@@ -45,7 +45,7 @@ namespace IMCManager.Services.Pacientes
             if (altura <= 0) { throw new InvalidOperationException("Altura Inválida"); }
             if (peso <= 0) { throw new InvalidOperationException("Peso Inválido"); }
 
-            decimal imc = peso / (altura * altura);
+            decimal imc = CalcularImc(peso, altura);
 
             string classificacao = ClassificarImc(imc);
 
@@ -75,7 +75,7 @@ namespace IMCManager.Services.Pacientes
 
         public void Atualizar(int id, string novoNome, string novoObjetivo, decimal novoPeso, decimal novoAltura)
         {
-           decimal novoImc = novoPeso / (novoAltura * novoAltura);
+           decimal novoImc = CalcularImc(novoPeso, novoAltura);
 
              string novoClasse = ClassificarImc(novoImc);
 
@@ -96,7 +96,6 @@ namespace IMCManager.Services.Pacientes
             }
 
             
-            paciente.PClasse = novoClasse;
             paciente.PPeso = novoPeso;
             paciente.PAltura = novoAltura;
             paciente.PImc = novoImc;

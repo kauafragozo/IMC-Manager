@@ -27,7 +27,11 @@ namespace IMCManager
             while (executando)
             {
                 ImcUI.ExibirMenu();
-                int op = Convert.ToInt32(Console.ReadLine());
+                if (!int.TryParse(Console.ReadLine(), out int op))
+                {
+                    Console.WriteLine("Opção Inválida!");
+                    Console.ReadKey();
+                }
 
                 switch (op)
                 {
