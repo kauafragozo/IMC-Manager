@@ -1,4 +1,6 @@
-# 📊 IMC Manager 📊
+<h1 align="center"> 📊 IMC Manager 📊</h1>
+![Status](https://img.shields.io/badge/status-active-success)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 Sistema de gerenciamento de pacientes com cálculo de IMC (Índice de Massa Corporal), desenvolvido em C# (.NET) utilizando Entity Framework Core e SQL Server.
 
