@@ -10,21 +10,18 @@ Sistema de gerenciamento de pacientes com cálculo de IMC (Índice de Massa Corp
 ![Status](https://img.shields.io/badge/status-active-success)
 
 
----
-
 <h2> 🚀 Funcionalidades  </h2>
 
-✅ CRUD completo com funcionalidades de Cadastrar, Listar, Buscar, Editar e Excluir Paciente
+CRUD completo com funcionalidades de Cadastrar, Listar, Buscar, Editar e Excluir Paciente
 
-📚 Consultar tabela de classificações IMC
+ Consultar tabela de classificações IMC
 
-🧮 Calcular IMC manualmente
+Calcular IMC manualmente
 
-📈 Exportar dados do Banco para um arquivo CSV, com uma pasta sendo criada dinamicamente na raiz do projeto para armazenar os arquivos
+Exportar dados do Banco para um arquivo CSV, com uma pasta sendo criada dinamicamente na raiz do projeto para armazenar os arquivos
 
-🚪 Sair do sistema
+ Sair do sistema
 
----
 
 <h2> 🏗️ Arquitetura do Projeto </h2>
 
@@ -40,7 +37,7 @@ Camada responsável pelas regras de negócio, sendo divida em:
 <h4> Data </h4>
 Utiliza Entity Framework Core com SQL Server. 
 
-🔌 String de Conexão armazenada no appSetting.JSON
+ String de Conexão armazenada no appSetting.JSON
 
 A tabela é mapeada como: "TPACIENTES"
 
